@@ -26,9 +26,9 @@ namespace Guessthenumber
                 Console.WriteLine("secret number generated ");
                 int numberguess = 1;
                 Random rand = new Random();
-                int secretNumber = rand.Next(1, 10);
+                int secretNumber = rand.Next(1, 101);
                 Console.WriteLine("Our secret number is " + secretNumber);
-                Console.WriteLine("Enter a number guess between 1 and 9:");
+                Console.WriteLine("Enter a number guess between 1 and 100:");
 
                 int guess = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("You guessed " + guess);
@@ -54,6 +54,11 @@ namespace Guessthenumber
                     Console.WriteLine("guess another number between 1 and 9 ");
                     guess = Convert.ToInt32(Console.ReadLine());
 
+                    if (numberguess > 20)
+                    {
+                        Console.WriteLine("you have went over the guess limit you lose");
+                        break;
+                    }
 
                 }
                 //now we have guessed the correct number 
