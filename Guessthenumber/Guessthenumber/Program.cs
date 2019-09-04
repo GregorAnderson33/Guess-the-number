@@ -17,42 +17,64 @@ namespace Guessthenumber
             Console.WriteLine("");
             Console.WriteLine("guess a random number generate by the computer");
 
-            int numberguess = 1;
-            Random rand = new Random();
-            int secretNumber = rand.Next(1,10);
-            Console.WriteLine("Our secret number is " + secretNumber);
-            Console.WriteLine("Enter a number guess between 1 and 9:");
-
-            int guess = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("You guessed " + guess);
-
-            while(guess != secretNumber)
+            Console.WriteLine("generating secret number ...");
+            bool keepPlaying = true;
+            while (keepPlaying == true)
             {
-                //keep guessing
 
-                //tell player they were wrong
-                Console.WriteLine("That is wrong. Guess again");
-                if (secretNumber < guess)
+
+                Console.WriteLine("secret number generated ");
+                int numberguess = 1;
+                Random rand = new Random();
+                int secretNumber = rand.Next(1, 10);
+                Console.WriteLine("Our secret number is " + secretNumber);
+                Console.WriteLine("Enter a number guess between 1 and 9:");
+
+                int guess = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("You guessed " + guess);
+
+                while (guess != secretNumber)
                 {
-                    Console.WriteLine("the secret number is less than your guess " + guess);
-                    numberguess = numberguess + 1;
+                    //keep guessing
+
+                    //tell player they were wrong
+                    Console.WriteLine("That is wrong. Guess again");
+                    if (secretNumber < guess)
+                    {
+                        Console.WriteLine("the secret number is less than your guess " + guess);
+                        numberguess = numberguess + 1;
+                    }
+                    else
+                    {
+                        Console.WriteLine("the secret number is more than your guess " + guess);
+                        numberguess = numberguess + 1;
+                    }
+
+                    //read a new guess from the player
+                    Console.WriteLine("guess another number between 1 and 9 ");
+                    guess = Convert.ToInt32(Console.ReadLine());
+
+
+                }
+                //now we have guessed the correct number 
+                Console.WriteLine("You have correct number");
+                Console.WriteLine("It took you " + numberguess + " attempts to get the correct number");
+
+                //ask if they want to play again 
+                Console.WriteLine("play again (y/n)");
+                string restartResponse = Console.ReadLine();
+                if (restartResponse == "y")
+                {
+                    //Restart the game
+                    keepPlaying = true;
                 }
                 else
                 {
-                    Console.WriteLine("the secret number is more than your guess " + guess);
-                    numberguess = numberguess + 1;
+                    //Exit the game
+                    keepPlaying = false;
                 }
-
-                //read a new guess from the player
-                Console.WriteLine("guess another number between 1 and 9 ");
-                guess = Convert.ToInt32(Console.ReadLine());
-
-
-            }
-            //now we have guessed the correct number 
-            Console.WriteLine("You have correct number");
-            Console.WriteLine("It took you " + numberguess + " attempts to get the correct number");
-            Console.ReadKey();
+            } // end of while loop
+            
 
             // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
         }
