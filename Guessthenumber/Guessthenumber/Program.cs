@@ -51,7 +51,7 @@ namespace Guessthenumber
                     }
 
                     //read a new guess from the player
-                    Console.WriteLine("guess another number between 1 and 9 ");
+                    Console.WriteLine("guess another number between 1 and 100 ");
                     guess = Convert.ToInt32(Console.ReadLine());
 
                     if (numberguess > 20)
@@ -59,6 +59,13 @@ namespace Guessthenumber
                         Console.WriteLine("you have went over the guess limit you lose");
                         break;
                     }
+
+                    while (guess < 1 || guess > 100)
+                    {
+                        Console.WriteLine("Your guess" + guess + "is outside the number range please try again" );
+                    }
+
+                      
 
                 }
                 //now we have guessed the correct number 
