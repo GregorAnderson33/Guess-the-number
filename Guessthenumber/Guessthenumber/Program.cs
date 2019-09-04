@@ -17,6 +17,7 @@ namespace Guessthenumber
             Console.WriteLine("");
             Console.WriteLine("guess a random number generate by the computer");
 
+            int numberguess = 1;
             Random rand = new Random();
             int secretNumber = rand.Next(1,10);
             Console.WriteLine("Our secret number is " + secretNumber);
@@ -25,23 +26,32 @@ namespace Guessthenumber
             int guess = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("You guessed " + guess);
 
-            if (secretNumber == guess)
+            while(guess != secretNumber)
             {
-                Console.WriteLine("You guessed correct");
-            }
-            else
-            {
+                //keep guessing
+
+                //tell player they were wrong
                 Console.WriteLine("That is wrong. Guess again");
                 if (secretNumber < guess)
                 {
-                    Console.WriteLine("the secret number is less than your guess" + guess);
+                    Console.WriteLine("the secret number is less than your guess " + guess);
+                    numberguess = numberguess + 1;
                 }
                 else
                 {
-                    Console.WriteLine("the secret number is more than your guess" + guess);
+                    Console.WriteLine("the secret number is more than your guess " + guess);
+                    numberguess = numberguess + 1;
                 }
-            }
 
+                //read a new guess from the player
+                Console.WriteLine("guess another number between 1 and 9 ");
+                guess = Convert.ToInt32(Console.ReadLine());
+
+
+            }
+            //now we have guessed the correct number 
+            Console.WriteLine("You have correct number");
+            Console.WriteLine("It took you " + numberguess + " attempts to get the correct number");
             Console.ReadKey();
 
             // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
